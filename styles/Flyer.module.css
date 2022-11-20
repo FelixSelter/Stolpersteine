@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.page {
+  position: relative;
+}
+
+.controlsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 0 10px;
+
+  background-color: #41aba6;
+}
+
+.controlsContainer > button {
+  border: none;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.controlsContainer > button:hover {
+  box-shadow: 0px 0px 0px 5px black inset;
+}

@@ -1,0 +1,19 @@
+.desktopImage {
+  position: relative;
+  display: none;
+
+  height: min(70vh, calc(0.418359375 * 100vw));
+}
+.mobileImage {
+  position: relative;
+  height: calc(1.222222222 * 100vw);
+}
+
+@media (min-width: 768px) {
+  .desktopImage {
+    display: block;
+  }
+  .mobileImage {
+    display: none;
+  }
+}

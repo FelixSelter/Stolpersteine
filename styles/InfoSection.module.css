@@ -1,0 +1,25 @@
+.row {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px;
+}
+
+.row > div > p {
+  text-align: justify;
+}
+
+.imageContainer {
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .row {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .imageRight {
+    order: 1;
+  }
+}

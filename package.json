@@ -1,11 +1,11 @@
 {
-  "name": "stolpersteine",
+  "name": "felixselter.com",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && next export -o build && touch ./build/.nojekyll",
+    "deploy": "gh-pages -d build -t true",
+    "start": "next dev",
     "lint": "next lint"
   },
   "dependencies": {
