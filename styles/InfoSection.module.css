@@ -1,7 +1,6 @@
 .row {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px;
+  display: flex;
+  flex-direction: column;
 }
 
 .row > div > p {
@@ -10,13 +9,17 @@
 
 .imageContainer {
   position: relative;
+  aspect-ratio: var(--ratio);
 }
 
 @media screen and (min-width: 768px) {
   .row {
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr;
+    flex-direction: row;
     gap: 30px;
+  }
+
+  .row > * {
+    flex: 1;
   }
 
   .imageRight {

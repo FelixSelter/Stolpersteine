@@ -7,13 +7,17 @@ import styles from "../styles/Flyer.module.css";
 export default function Flyer() {
   return (
     <>
+      <noscript>
+        The interactive flyer only works if javascript is enabled. Please
+        download the pdf
+      </noscript>
       <script src="https://code.jquery.com/jquery-3.6.1.min.js" />
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"
         onLoad={() => {
           const script = document.createElement("script");
           script.type = "text/javascript";
-          script.src = "/flyer/initFlyer.js";
+          script.src = "/Stolpersteine/flyer/initFlyer.js";
           document.body.appendChild(script);
         }}
       />
@@ -24,7 +28,7 @@ export default function Flyer() {
               return (
                 <div key={page} className={styles.page}>
                   <Image
-                    src={`/flyer/flyer-stolpersteine-${page}.webp`}
+                    src={`/Stolpersteine/flyer/flyer-stolpersteine-${page}.webp`}
                     alt=""
                     fill
                     style={{ objectFit: "contain" }}
@@ -37,15 +41,18 @@ export default function Flyer() {
         <div className={styles.controlsContainer}>
           <button id="prev">
             <Image
-              src="/icons/caret-left-solid.svg"
+              src="/Stolpersteine/icons/caret-left-solid.svg"
               alt=""
               width={50}
               height={50}
             />
           </button>
-          <a href="/flyer/Stadt-Wörrstadt-Fyler-Jüdische-Familien.pdf" download>
+          <a
+            href="/Stolpersteine/flyer/Stadt-Wörrstadt-Fyler-Jüdische-Familien.pdf"
+            download
+          >
             <Image
-              src="/icons/download-solid.svg"
+              src="/Stolpersteine/icons/download-solid.svg"
               alt=""
               width={50}
               height={50}
@@ -53,7 +60,7 @@ export default function Flyer() {
           </a>
           <button id="next">
             <Image
-              src="/icons/caret-right-solid.svg"
+              src="/Stolpersteine/icons/caret-right-solid.svg"
               alt=""
               width={50}
               height={50}

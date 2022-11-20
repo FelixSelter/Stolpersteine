@@ -85,7 +85,7 @@ export default function Gallery({ images }: GalleryProps) {
       <div className={styles.gallery}>
         <div className={styles.galleryControl} onClick={shiftLeft}>
           <Image
-            src="/icons/angle-left-solid.svg"
+            src="/Stolpersteine/icons/angle-left-solid.svg"
             alt="Shift gallery left"
             width={50}
             height={50}
@@ -107,7 +107,7 @@ export default function Gallery({ images }: GalleryProps) {
         </div>
         <div className={styles.galleryControl} onClick={shiftRight}>
           <Image
-            src="/icons/angle-right-solid.svg"
+            src="/Stolpersteine/icons/angle-right-solid.svg"
             alt="Shift gallery right"
             width={50}
             height={50}

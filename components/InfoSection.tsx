@@ -10,27 +10,30 @@ export enum ImagePosition {
 interface InfoSectionProps {
   title: string;
   img: string;
+  ratio: number;
   alt: string;
   imgPosition: ImagePosition;
-  children: string;
+  children: React.ReactNode;
 }
 
 export default function InfoSection({
   title,
   img,
   alt,
+  ratio,
   children,
   imgPosition,
 }: InfoSectionProps) {
   const textContainer = (
     <div>
       <h1>{title}</h1>
-      <p>{children}</p>
+      {children}
     </div>
   );
 
   const imageContainer = (
     <div
+      style={{ "--ratio": ratio } as React.CSSProperties}
       className={`${styles.imageContainer} ${
         imgPosition == ImagePosition.RIGHT ? styles.imageRight : ""
       }`}
