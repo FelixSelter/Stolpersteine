@@ -17,7 +17,7 @@ export default function Flyer() {
         onLoad={() => {
           const script = document.createElement("script");
           script.type = "text/javascript";
-          script.src = "/Stolpersteine/flyer/initFlyer.js";
+          script.src = "/Stolpersteine/scripts/initFlyer.js";
           document.body.appendChild(script);
         }}
       />

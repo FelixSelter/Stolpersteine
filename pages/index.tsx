@@ -6,6 +6,7 @@ import Flyer from "../components/Flyer";
 import Gallery from "../components/Gallery";
 import InfoSection, { ImagePosition } from "../components/InfoSection";
 import styles from "../styles/Home.module.css";
+import Countdown from "../components/Countdown";
 
 export default function Home() {
   return (
@@ -17,6 +18,12 @@ export default function Home() {
       <div className={styles.root}>
         <CoverImage />
         <div className={styles.contentContainer}>
+          <Countdown
+            heading="Stolpersteinverlegung"
+            subheading="Sei dabei"
+            date={new Date("2023-09-25T18:00:00")}
+          />
+
           <BorderedContainer className={styles.infoSection}>
             <InfoSection
               title="Was sind Stolpersteine?"
