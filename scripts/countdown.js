@@ -6,8 +6,17 @@ const day = 24 * hour;
 const countdown = document.getElementById("countdown");
 const date = new Date(countdown.getAttribute("data-date"));
 
-setInterval(() => {
+const interval = setInterval(() => {
   const delta = date.getTime() - Date.now();
+
+  if (delta <= 0) {
+    clearInterval(interval);
+    countdown.querySelector(".days").textContent = 0;
+    countdown.querySelector(".hours").textContent = 0;
+    countdown.querySelector(".minutes").textContent = 0;
+    countdown.querySelector(".seconds").textContent = 0;
+    return;
+  }
 
   const days = Math.floor(delta / day);
   const hours = Math.floor((delta % day) / hour);
