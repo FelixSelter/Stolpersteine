@@ -19,17 +19,17 @@ export default function Home() {
         <CoverImage />
         <div className={styles.contentContainer}>
           <Countdown
-            heading="Stolpersteinverlegung"
+            heading='Ausstellung: "Jüdische Familien in Wörrstadt"'
             subheading="Sei dabei"
-            date={new Date("2023-09-25T18:00:00")}
+            date={new Date("2022-11-26T09:00:00")}
           />
 
           <BorderedContainer className={styles.infoSection}>
             <InfoSection
               title="Was sind Stolpersteine?"
-              img="/Stolpersteine/img/480x260.png"
+              img="/Stolpersteine/img/Stolpersteine.png"
               ratio={480 / 260}
-              alt="A placeholder image"
+              alt="Ein Bild eines Stolpersteins mit dem Namen des Künstlers Gunther Demnig sowie einer kurzen Beschreibung des Projektes. Stolpersteine sollen an alle Verfolgten der Nationalsozialisten erinnern."
               imgPosition={ImagePosition.RIGHT}
             >
               <p>
@@ -40,7 +40,7 @@ export default function Home() {
               </p>
               <p>
                 Ins Leben gerufen wurde das Stolpersteinprojekt 1995 durch den
-                Kölner Künstler Gunther Demming. Es sind kleine, goldene
+                Kölner Künstler Gunther Demnig. Es sind kleine, goldene
                 Gedenktafeln ca. 10cmx10cm aus Messing, welche zwischen die
                 Pflastersteine verlegt werden. Man findet sie an Wohn- oder
                 Aufenthaltsorten von Menschen, welche während der Zeit des
@@ -61,9 +61,9 @@ export default function Home() {
             </InfoSection>
             <InfoSection
               title="Was treibt uns an?"
-              img="/Stolpersteine/img/480x260.png"
+              img="/Stolpersteine/img/Antrieb.png"
               ratio={480 / 260}
-              alt="A placeholder image"
+              alt="Der Geschichte Leistungskurs bei der Projektplanung"
               imgPosition={ImagePosition.LEFT}
             >
               <p>
@@ -88,38 +88,55 @@ export default function Home() {
             </InfoSection>
             <InfoSection
               title="Wie Sie helfen können"
-              img="/Stolpersteine/img/480x260.png"
+              img="/Stolpersteine/img/Spende.png"
               ratio={480 / 260}
-              alt="A placeholder image"
+              alt="Unterstützung in Form einer Spende wird für das Projekt Stolpersteine erbeten"
               imgPosition={ImagePosition.RIGHT}
             >
               <p>
                 Das Stolperstein-Projekt liegt unserem Kurs sehr am Herzen. Dies
                 ist jedoch erst der Anfang – durch Ihre finanzielle
-                Unterstützung und das Engagement der Schüler und Mitmenschen
-                wird dann dieses Projekt weiter wachsen. Werden auch Sie Teil
-                der mittlerweile europaweiten Stolperstein-Bewegung!
+                Unterstützung und das Engagement der Schülerschaft und
+                Mitmenschen wird dieses Projekt weiter wachsen. Werden auch Sie
+                Teil der mittlerweile europaweiten Stolperstein-Bewegung.
+                <br /> Gemeinsam können wir uns über das Projekt Stolpersteine
+                hinaus entwickeln. Sammeln wir genug Spenden, setzen wir weitere
+                Projekte zum&nbsp;
+                <u>Gedenken an die Verfolgten des Nationalsozialismus</u> um.
               </p>
-              <p style={{ textAlign: "center" }}>
+              <div style={{ textAlign: "center" }}>
                 <b>
-                  Bei XXXXXXX können Sie ihren Beitrag mit einer kleinen Spende
-                  leisten.
+                  Bitte unterstützen Sie unser Projekt mit einer Spende* auf
+                  unser Spendenkonto bei der Sparkasse Worms-Alzey-Ried.
                 </b>
-              </p>
+                <br />
+                <div style={{ marginTop: "10px" }}>
+                  <b> DE 04 5535 0010 0022 2712 59</b>
+                </div>
+              </div>
               <p>
-                Sie können dies Projekt aber auch anderweitig unterstützen.
+                Sie können dieses Projekt aber auch anderweitig unterstützen.
                 Indem die Steine gereinigt, gepflegt und vor Vandalismus
                 geschützt werden, werden sie lange erhalten bleiben und uns in
                 der Hektik des Alltages zum Stolpern und Innehalten verhelfen.
-                Wir bedanken uns von Herzen an alle, die sich mit uns gemeinsam
-                erinnern und gedenken.
+                Wir bedanken uns von Herzen bei allen, die sich gemeinsam mit
+                uns erinnern und gedenken.
               </p>
+              <i>
+                * Leider dürfen wir rechtlich keine Spendenquittungen
+                ausstellen. Wir bitten um Ihr Verständnis.
+                <br />
+                Damit Ihre Spende eindeutig zugeordnet werden kann, muss der
+                Verwendungszweck&nbsp;
+                <b>&quot;Spende Projekt Gedenken an die Verfolgten&quot;</b>
+                &nbsp; enthalten.
+              </i>
             </InfoSection>
             <InfoSection
               title="Wir sagen Danke!"
-              img="/Stolpersteine/img/480x260.png"
+              img="/Stolpersteine/img/Danke.jpg"
               ratio={480 / 260}
-              alt="A placeholder image"
+              alt="Der Geschichte Leistungskurs bedankt sich bei allen Unterstützern"
               imgPosition={ImagePosition.LEFT}
             >
               <p>
@@ -148,18 +165,34 @@ export default function Home() {
           <hr />
           <div>
             <Gallery
-              images={Array(10)
-                .fill({})
-                .map((_, i) => {
-                  return {
-                    src: "/Stolpersteine/img/250x250.png",
-                    alt: "A placeholder image",
-                  };
-                })}
+              images={[{
+                src: "/Stolpersteine/gallery/1.JPG",
+                alt: "A placeholder image",
+              },{
+                src: "/Stolpersteine/gallery/2.JPG",
+                alt: "A placeholder image",
+              },{
+                src: "/Stolpersteine/gallery/3.JPG",
+                alt: "A placeholder image",
+              },{
+                src: "/Stolpersteine/gallery/4.JPG",
+                alt: "A placeholder image",
+              },{
+                src: "/Stolpersteine/gallery/5.JPG",
+                alt: "A placeholder image",
+              },{
+                src: "/Stolpersteine/gallery/6.JPG",
+                alt: "A placeholder image",
+              }]}
             />
           </div>
         </div>
         <hr />
+        <p style={{ marginTop: "15px", textAlign: "center" }}>
+          Rechtschreibfehler entdeckt oder eine Frage zum Projekt?
+          <br />
+          Kontaktieren Sie gerne felixselterdeveloping@gmail.com
+        </p>
       </div>
     </>
   );

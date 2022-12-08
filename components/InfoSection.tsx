@@ -39,6 +39,7 @@ export default function InfoSection({
       }`}
     >
       <Image
+        className={styles.image}
         src={img}
         alt={alt}
         fill

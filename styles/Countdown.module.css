@@ -1,5 +1,5 @@
 .countdown {
-  height: 70px;
+  min-height: 70px;
   padding-top: 40px;
   padding-bottom: 40px;
 
@@ -21,7 +21,12 @@
 .segmentContainer {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
   gap: 10px;
+
+  width: 100%;
+  padding-top: 10px;
 }
 
 .segment {
@@ -57,7 +62,7 @@
 
 @media screen and (max-width: 1100px) {
   .countdown {
-    height: 160px;
+    min-height: 160px;
     padding-top: 20px;
     padding-bottom: 20px;
   }

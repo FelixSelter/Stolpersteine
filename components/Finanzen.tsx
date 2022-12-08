@@ -6,7 +6,7 @@ export default function Finanzen() {
   return (
     <div className={styles.container}>
       <h1>Der Stand unserer Finanzen:</h1>
-      <PercentageCircle color="#41aba6" percentage={50} />
+      <PercentageCircle color="#41aba6" percentage={64} />
     </div>
   );
 }

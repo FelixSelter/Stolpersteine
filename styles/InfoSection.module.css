@@ -12,6 +12,9 @@
   aspect-ratio: var(--ratio);
 }
 
+.image {
+}
+
 @media screen and (min-width: 768px) {
   .row {
     flex-direction: row;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/PercentageCircle.module.css";
 
 interface PercentageCircleProps {
@@ -10,8 +10,25 @@ export default function PercentageCircle({
   color,
   percentage,
 }: PercentageCircleProps) {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle(styles.visible, entry.isIntersecting);
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    const percentageCircle = document.getElementById("percentageCircle")!;
+    observer.observe(percentageCircle);
+  });
+
   return (
     <svg
+      id="percentageCircle"
       viewBox="0 0 36 36"
       style={{ stroke: color, maxHeight: "min(40vh, 250px)" }}
     >

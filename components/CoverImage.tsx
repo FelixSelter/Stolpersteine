@@ -7,7 +7,7 @@ export default function CoverImage() {
     <div>
       <div className={styles.mobileImage}>
         <Image
-          src="/Stolpersteine/img/Mobile.webp"
+          src="/Stolpersteine/img/Mobile.png"
           alt="Gruppenbild des Geschichte Leistungskurses"
           fill
           style={{
@@ -17,7 +17,7 @@ export default function CoverImage() {
       </div>
       <div className={styles.desktopImage}>
         <Image
-          src="/Stolpersteine/img/Desktop.webp"
+          src="/Stolpersteine/img/Desktop.png"
           alt="Gruppenbild des Geschichte Leistungskurses"
           fill
           style={{
