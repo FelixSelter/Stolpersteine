@@ -1,0 +1,130 @@
+---
+import HorizontalNavigation from './HorizontalNavigation.astro';
+
+import XElement from 'astro-xelement';
+const { Div } = XElement;
+
+interface Props {
+  childCount: number;
+  showXs?: number;
+  showSm?: number;
+  showMd?: number;
+  showLg?: number;
+  showXl?: number;
+}
+
+const {
+  childCount,
+  showXs = 1,
+  showSm = showXs,
+  showMd = showSm,
+  showLg = showMd,
+  showXl = showLg,
+} = Astro.props;
+---
+
+<div class="container">
+  <HorizontalNavigation
+    onLeftClick={(e: MouseEvent) => {
+      const slider = (e.target as HTMLDivElement).nextElementSibling
+        ?.firstElementChild?.firstElementChild as HTMLDivElement;
+
+      const shown = Number(getComputedStyle(slider).getPropertyValue('--show'));
+
+      const oldPos = Number(slider.dataset.pos);
+      if (oldPos > 0) {
+        const newPos = oldPos - 1;
+        slider.dataset.pos = newPos.toString();
+        slider.style.left = `-${(newPos * 100) / shown}%`;
+      }
+    }}
+    onRightClick={(e: MouseEvent) => {
+      const slider = (e.target as HTMLDivElement).previousElementSibling
+        ?.firstElementChild?.firstElementChild as HTMLDivElement;
+
+      const shown = Number(getComputedStyle(slider).getPropertyValue('--show'));
+
+      const oldPos = Number(slider.dataset.pos);
+      if (oldPos < Number(slider.dataset.childcount) - shown) {
+        const newPos = oldPos + 1;
+        slider.dataset.pos = newPos.toString();
+        slider.style.left = `-${(newPos * 100) / shown}%`;
+      }
+    }}
+  >
+    <div class="hider">
+      <Div
+        class="slider"
+        data-pos={0}
+        data-childcount={childCount}
+        @resize={(e: ResizeObserverEntry) => {
+          const slider = e.target as HTMLDivElement;
+          const shown = Number(
+            getComputedStyle(slider).getPropertyValue('--show'),
+          );
+          const oldPos = Number(slider.dataset.pos);
+
+          const newPos = Math.min(
+            oldPos,
+            Number(slider.dataset.childcount) - shown,
+          );
+
+          slider.dataset.pos = newPos.toString();
+          slider.style.left = `-${(newPos * 100) / shown}%`;
+        }}
+      >
+        <slot />
+      </Div>
+    </div>
+  </HorizontalNavigation>
+</div>
+
+<style define:vars={{ childCount, showXs, showLg, showMd, showSm, showXl }}>
+  .container,
+  .hider {
+    height: 100%;
+    padding: 0px;
+  }
+
+  .slider {
+    --show: var(--showXs);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, calc(100% / var(--childCount)));
+    grid-auto-flow: column;
+
+    width: calc(100% / var(--show) * var(--childCount));
+    height: 100%;
+
+    position: relative;
+    left: 0px;
+    transition: 1s;
+  }
+
+  @media (min-width: 576px) {
+    .slider {
+      --show: var(--showSm);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .slider {
+      --show: var(--showMd);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .slider {
+      --show: var(--showLg);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .slider {
+      --show: var(--showXl);
+    }
+  }
+
+  .hider {
+    overflow: hidden;
+  }
+</style>

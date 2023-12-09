@@ -1,0 +1,111 @@
+---
+import ArticleItem from './ArticleItem.astro';
+import HorizontalSlider from '../../components/HorizontalSlider.astro';
+
+import TaTüImg from './rsc/Tatü.JPG';
+import SommerfestImg from './rsc/Sommerfest.png';
+import Section from '../../components/Section.astro';
+---
+
+<Section title="Neues:">
+  <div class="row">
+    <div class="col-12">
+      <HorizontalSlider childCount={2} showXl={3} showLg={2} showMd={1}>
+        <ArticleItem
+          title="Cocktails für Stolpersteine"
+          teaser="Eine Bitte um Spenden, aber auch ein Angebot für Gespräche."
+          date={new Date(2022, 7, 21)}
+          img={SommerfestImg}
+          alt="Verschiedene Cocktails"
+        >
+          Als unser Projekt Stolpersteine in Wörrstadt geboren wurde, war uns
+          besonders wichtig, dass die Kommunikation mit den Menschen aus
+          Wörrstadt und Umgebung ein großer Teil unserer Arbeit sein wird. Wir
+          wollen an die Verfolgten Menschen gedenken und ihnen ein Teil ihres
+          Gesichtes wiedergeben. Dafür nutzten wir die Gelegenheit des
+          Sommerfest der GFG 2022. In Eigenregie organisierten wir einen Stand,
+          entwarfen delikate Cocktails und beschrieben Plakate, die über die
+          Verfolgten und unser Stolpersteinprojekt informieren sollten. Nach
+          einer Menge Planung, hatten wir es geschafft und standen mit
+          Tatendrang an unserem Stand auf dem Sommerfest. Unsere Mühe hatte sich
+          ausgezahlt, wir hatten die Möglichkeit mit den Besuchenden ins
+          Gespräch zu kommen und diese für das Thema zu sensibilisieren.
+          Außerdem nahmen wir durch den Verkauf der Cocktails erste Gelder für
+          die Realisation der Stolpersteinverlegung ein. Für die tollen
+          Gespräche und die großzügige Unterstützung möchten wir uns bei allen
+          Besuchenden bedanken. Dank Ihnen wird ein Teil der Geschichte
+          wiederbelebt und die schrecklichen Verbrechen der Nationalsozialisten
+          nie vergessen. Wir freuen uns auf weitere Veranstaltungen dieser Art
+          und hoffen Sie bald bei der Verlegung der Stolpersteine wiederzusehen.
+        </ArticleItem>
+
+        <ArticleItem
+          title="Ausstellung am Tag der offenen Tür"
+          teaser="Schüler erwecken Geschichte zum Leben: Ausstellung an der Schule enthüllt Schicksale von Verfolgten"
+          date={new Date(2022, 11, 26)}
+          img={TaTüImg}
+          alt="Ein Kursmitglied berichtet einem Besucher etwas über die Geschichte der Juden in Wörrstadt"
+        >
+          Unser Projekt „Stolpersteine“ ist unserem Kurs sehr wichtig, denn wir
+          wollen an die schlimme Zeit des Nationalsozialismus und seine
+          Verbrechen erinnern, aber vor allem an die Menschen und ihr Leben
+          gedenken. So wurde am 26.11.2022 unser alljährlicher Tag der offenen
+          Tür veranstaltet, an welchen wir Informationen über die Juden und ihr
+          damaliges Leben ausstellten. Hierbei ging es darum, an die Existenz
+          der Juden ganz lokal, nämlich in Wörrstadt selbst, zu erinnern. Die
+          Ausstellung handelte von ihren Geschäften, Friedhöfen in Wörrstadt und
+          Rommersheim und die Auswirkungen, die die Menschen in Wörrstadt
+          selbst, direkt erlitten. Das wichtigste war, dass hier vor allem Namen
+          genannt wurden und die zusammengetragenen Informationen auch einen
+          kleinen Einblick in das Leben der Familien liefern konnten. Denkt man
+          an diese Zeit, dann hört man meist ausschließlich von den großen,
+          bekannten Städten, doch zu erfahren was mit den Menschen in dem Dorf
+          passierte, in welchem wir heute zur Schule gehen, ist eine
+          tiefgreifende Erfahrung die sehr viel Nähe und Betroffenheit in uns
+          auslöste. Unter anderem wurde von der Brutalität, mit welcher die
+          Juden vertrieben und ihr Besitz zerstört wurde, berichtet. Ihre Möbel
+          wurden mit Äxten zerstört und ihre Geschäfte und Wohnungen blieben
+          ebenso nicht verschont. Die Synagoge in Wörrstadt wurde geplündert und
+          verwüstet und einiger Besitz verbrannt. All dies passierte während der
+          Reichspogromnacht 1938 in Wörrstadt selbst, ausgeführt durch Männer
+          der SS und SA sowie einige Zivilisten. Diese Ausstellung wurde
+          großzügiger Weise von Karl Heinz Andresen, Friedemann Hofmann und
+          ihren Kollegen für uns zur Verfügung gestellt, sodass wir diese
+          wichtigen Informationen auch an unserer Schule verbreiten konnten.
+          Davor wurde sie bereits von ihrem Team in der wörrstädter Kirche
+          ausgestellt. Wir konnten die Rollups schon am Vortag zusammen mit
+          Herrn Hofmann abholen und an unserer Schule aufbauen. Es waren immer
+          mehrere Person unseres Kurses an der Ausstellung, um Fragen der
+          Besucher zu beantworten und Auskunft liefern zu können. Wir sammelten
+          Spenden und konnten dank Ihrer Hilfe einiges für dieses Projekt
+          einnehmen, hierfür bedanken wir uns sehr! Es liegt uns sehr am Herzen
+          dieses Projekt auch weiterhin voranzutreiben, wobei der Tag der
+          offenen Tür dafür eine gute Möglichkeit darstellte. Es stand vor allem
+          der humane Aspekt im Vordergrund, denn Deportationen und Gewalt,
+          ausgelöst durch das NS-Regime, passierten in ganz Deutschland, egal
+          wie klein das Dorf war, alle Juden waren betroffen. Diese Menschen
+          führten alle normale Leben, hatten Familie, gingen zu Sportvereinen,
+          zur Arbeit oder an die Schule. Vor allem diese Aspekte sind wichtig,
+          wenn wir an die damalige Zeit gedenken wollen. Wir dürfen diese
+          Menschen nicht in Vergessenheit geraten lassen.
+        </ArticleItem>
+      </HorizontalSlider>
+    </div>
+  </div>
+</Section>
+
+<style>
+  section {
+    width: 100%;
+  }
+
+  .row {
+    background-color: #41aba6;
+    padding: 30px;
+  }
+
+  .col-12 {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+</style>

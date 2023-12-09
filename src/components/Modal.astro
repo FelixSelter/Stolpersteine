@@ -1,0 +1,65 @@
+---
+// import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import XElement from 'astro-xelement';
+import CloseImg from './x-fill.png';
+
+const { Div } = XElement;
+---
+
+<template>
+  <div class="modal">
+    <div class="content">
+      <slot />
+      <Div
+        class="exit"
+        @click={(e: MouseEvent) => {
+          document.body.style.position = 'relative';
+          (e.target as HTMLDivElement).parentElement?.parentElement?.remove();
+        }}
+      >
+        <!-- <Icon name="ph:x-fill" color="red" /> -->
+        <Image src={CloseImg} alt="" />
+      </Div>
+    </div>
+  </div>
+</template>
+
+<style>
+  .modal {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .content {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .exit {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+  .exit:hover > img {
+    color: #f75a5a;
+  }
+
+  .exit > img {
+    pointer-events: none;
+
+    width: 50px;
+    height: 50px;
+  }
+</style>

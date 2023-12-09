@@ -1,0 +1,47 @@
+---
+import { Picture } from 'astro:assets';
+import MobileImg from './rsc/Mobile.png';
+import DesktopImg from './rsc/Desktop.png';
+---
+
+<section>
+  <div class="row">
+    <div class="col-12">
+      <Picture
+        class="img mobile"
+        src={MobileImg}
+        alt="Gruppenbild des Geschichte Leistungskurses, der die Stolpersteinverlegung realisiert hat."
+        widths={[240, 540, 720, 1200, MobileImg.width]}
+        loading="eager"
+      />
+      <Picture
+        class="img desktop"
+        src={DesktopImg}
+        alt="Gruppenbild des Geschichte Leistungskurses, der die Stolpersteinverlegung realisiert hat."
+        widths={[240, 540, 720, 1200, DesktopImg.width]}
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .desktop {
+    display: none;
+  }
+
+  .img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .mobile {
+      display: none;
+    }
+
+    .desktop {
+      display: block;
+    }
+  }
+</style>

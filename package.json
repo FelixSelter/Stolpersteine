@@ -1,0 +1,35 @@
+{
+  "name": "stolpersteinev3",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.1",
+    "@iconify-json/fa6-solid": "^1.1.19",
+    "@iconify-json/ph": "^1.1.8",
+    "astro": "^4.0.3",
+    "astro-compress": "^2.2.3",
+    "sharp": "^0.33.0",
+    "astro-icon": "1.0.0-next.2"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.29",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.13.2",
+    "astro-xelement": "^3.2.0",
+    "eslint": "^8.55.0",
+    "eslint-config-standard-with-typescript": "^40.0.0",
+    "eslint-plugin-astro": "^0.30.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-promise": "^6.0.0",
+    "typescript": "^5.3.3"
+  }
+}

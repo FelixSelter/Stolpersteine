@@ -1,0 +1,144 @@
+---
+import { Picture } from 'astro:assets';
+import XElement from 'astro-xelement';
+import Modal from '../../components/Modal.astro';
+
+const { Button } = XElement;
+
+interface Props {
+  title: string;
+  date: Date;
+  teaser: string;
+  img: ImageMetadata;
+  alt: string;
+}
+
+const { alt, date, img, teaser, title } = Astro.props;
+---
+
+<div class="center mt">
+  <div class="container">
+    <Picture
+      src={img}
+      alt={alt}
+      class="img"
+      widths={[240, 540, 720, 1200, img.width]}
+    />
+    <div class="text">
+      <span class="date">{date.toLocaleDateString('de')}</span><br />
+      <h3 class="title">{title}</h3>
+      <div class="less">
+        <div class="summary">{teaser}</div>
+      </div>
+      <Button
+        class="more"
+        @click={(e: MouseEvent) => {
+          document.body.style.position = 'fixed';
+          const template = (e.target as HTMLDivElement)
+            .nextElementSibling as HTMLTemplateElement;
+          const clone = template.content.cloneNode(true);
+          document.body.appendChild(clone);
+        }}
+      >
+        Weiter lesen
+      </Button>
+      <Modal>
+        <div class="article">
+          <Picture
+            src={img}
+            alt={alt}
+            class="img"
+            widths={[240, 540, 720, 1200, img.width]}
+          />
+          <div class="text">
+            <span class="date">{date.toLocaleDateString('de')}</span><br />
+            <h1 class="title">{title}</h1>
+          </div>
+          <div class="article-content">
+            <slot />
+          </div>
+        </div>
+      </Modal>
+    </div>
+  </div>
+</div>
+
+<style>
+  .article {
+    background-color: white;
+    padding: 40px;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: scroll;
+    border-radius: 10px;
+  }
+
+  .article-content {
+    text-align: justify;
+    line-height: 1.5;
+  }
+
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+
+    margin-inline: 1rem;
+
+    padding-bottom: 5px;
+  }
+
+  .container {
+    width: 90%;
+    height: 100%;
+    padding: 0px;
+
+    background-color: white;
+  }
+
+  .img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .less {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .summary {
+    flex-shrink: 1;
+    mask-image: linear-gradient(180deg, black 0%, transparent);
+    overflow: hidden;
+  }
+
+  .date {
+    font-size: 10pt;
+  }
+
+  .title {
+    color: #41aba6;
+  }
+
+  .more {
+    align-self: flex-end;
+
+    margin-top: auto;
+    margin-right: 10px;
+
+    font-size: 10pt;
+    color: #41aba6;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .more:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+</style>

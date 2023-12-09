@@ -1,0 +1,130 @@
+---
+import PercentageCircle from '../../components/PercentageCircle.astro';
+import { Picture, getImage } from 'astro:assets';
+
+import Blank from './rsc/blank.png';
+import Overlay from './rsc/overlay.png';
+import Section from '../../components/Section.astro';
+const optimizedOverlay = await getImage({ src: Overlay, format: 'png' });
+
+import XElement from 'astro-xelement';
+const { Div } = XElement;
+
+const numStolpersteine = 12;
+const achieved = 83;
+---
+
+<Section title="Der Stand unserer Finazen:">
+  <div class="row show-mobile">
+    <div class="col-12 center">
+      <PercentageCircle
+        percent={achieved}
+        color="#41aba6"
+        alt={`Wir haben bereits ${achieved}% der nötigenfinanziellen Mittel organisiert.`}
+      />
+    </div>
+  </div>
+  <Div
+    class="row show-desktop"
+    @do={(row: HTMLDivElement) => {
+      const observer = new IntersectionObserver((events) => {
+        events.forEach((event) => {
+          Array.prototype.forEach.call(
+            row.getElementsByClassName('overlay'),
+            (overlay: HTMLDivElement) => {
+              if (event.isIntersecting) {
+                overlay.style.animation =
+                  'reveal 0.5s linear calc(0.5 * var(--index)) forwards';
+              } else {
+                overlay.style.animation = 'none';
+              }
+            },
+          );
+        });
+      }, {});
+      observer.observe(row);
+    }}
+  >
+    {
+      Array.from({ length: numStolpersteine }).map((_, i) => {
+        return (
+          <div class="col-1 col-md-4 col-lg-3 col-xl-2 mb-3">
+            <div class="container">
+              <Picture
+                src={Blank}
+                alt=""
+                class="img blank"
+                widths={[240, 540, 720, 1200, Blank.width]}
+              />
+              <div
+                class="overlay"
+                style={{
+                  backgroundImage: `url(${optimizedOverlay.src});`,
+                  '--index': `${i}s`,
+                  '--percentage': `${Math.max(
+                    0,
+                    Math.min(1, (numStolpersteine * achieved) / 100 - i) * 100,
+                  )}%`,
+                }}
+              />
+            </div>
+          </div>
+        );
+      })
+    }
+  </Div>
+
+  <style>
+    .img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      position: relative;
+      margin: 0px;
+      padding: 0px;
+      width: 100%;
+      height: calc(100% - 0.2rem);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: right;
+    }
+
+    @keyframes reveal {
+      100% {
+        left: var(--percentage);
+        width: calc(100% - var(--percentage));
+      }
+    }
+
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .show-desktop {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .show-mobile {
+        display: none;
+      }
+
+      .show-desktop {
+        display: flex;
+      }
+    }
+  </style>
+</Section>

@@ -1,0 +1,60 @@
+---
+import { Picture } from 'astro:assets';
+
+interface Props {
+  title: string;
+  img: ImageMetadata;
+  alt: string;
+  swapSides?: boolean;
+}
+
+const { title, img, alt, swapSides = false } = Astro.props;
+
+const orderText = swapSides ? 0 : 1;
+const orderImg = swapSides ? 1 : 0;
+---
+
+<div class="row g-5 mt-3">
+  <div class="img-column col-12 col-md-5">
+    <Picture
+      src={img}
+      alt={alt}
+      class="img"
+      widths={[240, 540, 720, 1200, img.width]}
+    />
+  </div>
+
+  <div class="text-column col-12 col-md-7">
+    <h2>{title}</h2>
+    <hr />
+    <div class="text">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style define:vars={{ orderText, orderImg }}>
+  @media (min-width: 768px) {
+    .text-column {
+      order: var(--orderText);
+    }
+
+    .img-column {
+      order: var(--orderImg);
+    }
+  }
+
+  .img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .text {
+    text-align: justify;
+  }
+
+  .img-column {
+    display: flex;
+    align-items: center;
+  }
+</style>

@@ -1,0 +1,131 @@
+---
+export interface Props {
+  event: Date;
+  heading: string;
+  subheading: string;
+}
+
+const { event, heading, subheading } = Astro.props;
+---
+
+<div class="countdown">
+  <div class="headings">
+    <div class="subheading">
+      <span>{subheading}&nbsp;</span>
+      <time datetime={event.toISOString()}>
+        &#91;{event.toLocaleString('De-de')}&#93;
+      </time>
+    </div>
+    <div class="heading">
+      <span>{heading}</span>
+    </div>
+  </div>
+  <div class="digits">
+    <div class="digitContainer">
+      <span class="digit"></span>
+      <span class="unit">Tage</span>
+    </div>
+    <div class="digitContainer">
+      <span class="digit"></span>
+      <span class="unit">Stunden</span>
+    </div>
+    <div class="digitContainer">
+      <span class="digit"></span>
+      <span class="unit">Minuten</span>
+    </div>
+    <div class="digitContainer">
+      <span class="digit"></span>
+      <span class="unit">Sekunden</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const second = 1000;
+  const minute = 60 * second;
+  const hour = 60 * minute;
+  const day = 24 * hour;
+
+  setInterval(() => {
+    for (const countdown of document.getElementsByClassName('countdown')) {
+      const event = new Date(
+        countdown.getElementsByTagName('time')[0]!.dateTime,
+      );
+      const time = Math.max(event.getTime() - Date.now(), 0);
+      const digits = Array.from(countdown.getElementsByClassName('digit'));
+
+      digits[0]!.innerHTML = Math.floor(time / day).toString();
+      digits[1]!.innerHTML = Math.floor((time % day) / hour).toString();
+      digits[2]!.innerHTML = Math.floor((time % hour) / minute).toString();
+      digits[3]!.innerHTML = Math.floor((time % minute) / second).toString();
+    }
+  }, 1000);
+</script>
+
+<style>
+  .countdown {
+    display: flex;
+    gap: 20px;
+
+    min-height: 70px;
+    padding: 40px 20px 40px 20px;
+
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1030%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%23SvgjsLinearGradient1031)'%3e%3c/rect%3e%3cpath d='M1440 0L1310.18 0L1440 7.14z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M1310.18 0L1440 7.14L1440 262.01L774.5100000000001 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M774.51 0L1440 262.01L1440 359.56L599.98 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M599.98 0L1440 359.56L1440 419.98L374.55 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 560L677.35 560L0 371.37z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 371.37L677.35 560L765.0500000000001 560L0 194.26z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 194.26L765.0500000000001 560L916.7600000000001 560L0 161.20999999999998z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 161.20999999999998L916.7600000000001 560L1243.8200000000002 560L0 157.14999999999998z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1030'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='-39.29%25' x2='84.72%25' y2='139.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1031'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(65%2c 171%2c 163%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1036%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%23SvgjsRadialGradient1037)'%3e%3c/rect%3e%3cpath d='M1440 0L1310.18 0L1440 7.14z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M1310.18 0L1440 7.14L1440 262.01L774.5100000000001 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M774.51 0L1440 262.01L1440 359.56L599.98 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M599.98 0L1440 359.56L1440 419.98L374.55 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 560L677.35 560L0 371.37z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 371.37L677.35 560L765.0500000000001 560L0 194.26z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 194.26L765.0500000000001 560L916.7600000000001 560L0 161.20999999999998z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 161.20999999999998L916.7600000000001 560L1243.8200000000002 560L0 157.14999999999998z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1036'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cradialGradient cx='100%25' cy='0%25' r='1545.06' gradientUnits='userSpaceOnUse' id='SvgjsRadialGradient1037'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(65%2c 171%2c 163%2c 1)' offset='1'%3e%3c/stop%3e%3c/radialGradient%3e%3c/defs%3e%3c/svg%3e");
+  }
+
+  .headings {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .heading {
+    color: white;
+    font-size: 30px;
+  }
+
+  .subheading {
+    color: #1b42ad;
+  }
+
+  .digits {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    width: 100%;
+  }
+
+  .digitContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 140px;
+    height: 70px;
+
+    background-color: rgba(26, 70, 68, 0.7);
+  }
+
+  .digit {
+    color: white;
+    font-size: 30px;
+  }
+
+  .unit {
+    color: #43ab41;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .countdown,
+    .digit-container {
+      flex-direction: column;
+    }
+    .headings {
+      align-items: center;
+    }
+  }
+</style>

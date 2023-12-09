@@ -1,0 +1,67 @@
+---
+import { Picture } from 'astro:assets';
+import Modal from '../../components/Modal.astro';
+
+interface Props {
+  img: ImageMetadata;
+  alt: string;
+}
+
+const { img, alt } = Astro.props;
+---
+
+<div class="container fullscreen-image">
+  <Picture
+    src={img}
+    alt={alt}
+    class="img"
+    widths={[240, 540, 720, 1200, img.width]}
+  />
+  <Modal>
+    <Picture
+      src={img}
+      alt={alt}
+      class="img-fullscreen"
+      widths={[240, 540, 720, 1200, img.width]}
+    />
+  </Modal>
+</div>
+
+<script>
+  Array.prototype.forEach.call(
+    document.getElementsByClassName('fullscreen-image'),
+    (img: HTMLDivElement) => {
+      img.addEventListener('click', () => {
+        document.body.style.position = 'fixed';
+        const template = img.lastElementChild as HTMLTemplateElement;
+        const clone = template.content.cloneNode(true);
+        document.body.appendChild(clone);
+      });
+    },
+  );
+</script>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    cursor: zoom-in;
+  }
+
+  .img {
+    max-width: 90%;
+    height: auto;
+
+    pointer-events: none;
+  }
+
+  .img-fullscreen {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+  }
+</style>

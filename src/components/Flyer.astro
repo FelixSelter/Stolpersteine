@@ -1,0 +1,115 @@
+---
+import XElement from 'astro-xelement';
+import HorizontalNavigation from './HorizontalNavigation.astro';
+import { Picture } from 'astro:assets';
+
+interface Props {
+  pages: Array<{
+    img: ImageMetadata;
+    alt: string;
+  }>;
+}
+
+const { Div } = XElement;
+
+const { pages } = Astro.props;
+
+const ratio = (pages[0].img.width * 2) / pages[0].img.height;
+
+function initFlyer(flipbook: HTMLDivElement): void {
+  // @ts-ignore
+  window['$'](flipbook).turn({
+    autoCenter: true,
+  });
+}
+
+function next(event: MouseEvent): void {
+  const flipbook = (event.target as HTMLButtonElement).previousElementSibling
+    ?.firstElementChild?.firstElementChild?.firstElementChild as HTMLDivElement;
+  // @ts-ignore
+  window['$'](flipbook).turn('next');
+}
+
+function previous(event: MouseEvent): void {
+  const flipbook = (event.target as HTMLButtonElement).nextElementSibling
+    ?.firstElementChild?.firstElementChild?.firstElementChild as HTMLDivElement;
+  // @ts-ignore
+  window['$'](flipbook).turn('previous');
+}
+---
+
+<div class="container">
+  <HorizontalNavigation onLeftClick={previous} onRightClick={next}>
+    <div class="center">
+      <div class="pages-container">
+        <Div id="flipbook" @do={initFlyer}>
+          {
+            pages.map((page) => {
+              return (
+                <div class="page">
+                  <Picture
+                    class="item"
+                    src={page.img}
+                    alt={page.alt}
+                    widths={[240, 540, 720, 1200, page.img.width]}
+                  />
+                </div>
+              );
+            })
+          }
+        </Div>
+      </div>
+    </div>
+  </HorizontalNavigation>
+</div>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+  integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"
+  integrity="sha512-rFun1mEMg3sNDcSjeGP35cLIycsS+og/QtN6WWnoSviHU9ykMLNQp7D1uuG1AzTV2w0VmyFVpszi2QJwiVW6oQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+
+<style define:vars={{ ratio }}>
+  .container {
+    width: 100%;
+  }
+
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button {
+    width: 40px;
+    height: 500px;
+
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .pages-container {
+    aspect-ratio: var(--ratio);
+    width: min(100%, calc(var(--ratio) * 80vh));
+    overflow: hidden;
+  }
+
+  #flipbook {
+    height: 100%;
+  }
+
+  .item {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

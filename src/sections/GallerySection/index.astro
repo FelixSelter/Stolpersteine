@@ -1,0 +1,51 @@
+---
+import GalleryItem from './GalleryItem.astro';
+import HorizontalSlider from '../../components/HorizontalSlider.astro';
+
+import Img1 from './rsc/1.JPG';
+import Img2 from './rsc/2.JPG';
+import Img3 from './rsc/3.JPG';
+import Img4 from './rsc/4.JPG';
+import Img5 from './rsc/5.JPG';
+import Img6 from './rsc/6.JPG';
+import Section from '../../components/Section.astro';
+---
+
+<Section title="Gallerie:">
+  <div class="container mt-3">
+    <HorizontalSlider
+      childCount={6}
+      showXl={4}
+      showLg={3}
+      showMd={2}
+      showXs={1}
+    >
+      <GalleryItem
+        img={Img1}
+        alt="Kinderpunschverkauf zur Finanzierung der Stolpersteine"
+      />
+      <GalleryItem
+        img={Img2}
+        alt="Ausstellung zu den verfolgten Juden in Wörrstadt"
+      />
+      <GalleryItem
+        img={Img3}
+        alt="Infostand auf der Ausstellung zu den verfolgten Juden in Wörrstadt"
+      />
+      <GalleryItem
+        img={Img4}
+        alt="Gruppenbild mit der Schulleitung und Vertretern der Arbeitsgruppe Juden in Wörrstadt vor der Ausstellung zu den verfolgten Juden in Wörrstadt"
+      />
+      <GalleryItem
+        img={Img5}
+        alt="Die Schulleitung zusammen mit Vertretern der Arbeitsgruppe Juden in Wörrstadt"
+      />
+      <GalleryItem
+        img={Img6}
+        alt="Ein Teil des Geschichte Leistungskurses mit Vertretern der Arbeitsgruppe Juden in Wörrstadt"
+      />
+    </HorizontalSlider>
+  </div>
+</Section>
+
+<style></style>
