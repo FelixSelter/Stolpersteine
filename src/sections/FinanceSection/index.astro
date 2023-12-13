@@ -5,16 +5,16 @@ import { Picture, getImage } from 'astro:assets';
 import Blank from './rsc/blank.png';
 import Overlay from './rsc/overlay.png';
 import Section from '../../components/Section.astro';
-const optimizedOverlay = await getImage({ src: Overlay, format: 'png' });
 
 import XElement from 'astro-xelement';
+const optimizedOverlay = await getImage({ src: Overlay, format: 'png' });
 const { Div } = XElement;
 
 const numStolpersteine = 12;
 const achieved = 83;
 ---
 
-<Section title="Der Stand unserer Finazen:">
+<Section title="Der Stand unserer Finanzen:">
   <div class="row show-mobile">
     <div class="col-12 center">
       <PercentageCircle
